@@ -114,6 +114,15 @@ class RNParallax extends Component {
     return [-this.getExtraScrollHeight(), 0, this.getHeaderScrollDistance()];
   }
 
+  getTitleFadeoutRatio() {
+    const {titleFadeoutRatio} = this.props;
+    return titleFadeoutRatio;
+  }
+
+  getInputRangeForTitle() {
+    return [-this.getExtraScrollHeight(), 0, this.getHeaderScrollDistance()*this.getTitleFadeoutRatio()];
+  }
+
   getHeaderHeight() {
     const { scrollY } = this.state;
     return scrollY.interpolate({
@@ -182,7 +191,7 @@ class RNParallax extends Component {
     const { scrollY } = this.state;
     const { alwaysShowTitle } = this.props;
     return scrollY.interpolate({
-      inputRange: this.getInputRange(),
+      inputRange: this.getInputRangeForTitle(),
       outputRange: [1, 1, alwaysShowTitle ? 1 : 0],
       extrapolate: 'clamp',
     });
@@ -378,6 +387,7 @@ RNParallax.propTypes = {
   alwaysShowNavBar: PropTypes.bool,
   statusBarColor: PropTypes.string,
   scrollViewProps: PropTypes.object,
+  titleFadeoutRatio: PropTypes.number,    
 };
 
 RNParallax.defaultProps = {
@@ -401,6 +411,7 @@ RNParallax.defaultProps = {
   alwaysShowNavBar: true,
   statusBarColor: null,
   scrollViewProps: {},
+  titleFadeoutRatio: 1,
 };
 
 export default RNParallax;

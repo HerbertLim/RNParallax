@@ -1,3 +1,8 @@
+Added `titleFadeoutRatio` props.
+- Valid range: 0..1 
+- Smaller the value, title text fades out earlier
+
+Thanks kyaroru :)
 
 # RNParallax (react-native-parallax-header)
 [![GitHub stars](https://img.shields.io/github/stars/kyaroru/RNParallax.svg)](https://github.com/kyaroru/RNParallax/stargazers)
